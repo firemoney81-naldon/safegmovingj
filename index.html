@@ -1,23 +1,399 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
+   <style>
+        /* 기본 스타일 */
+        body { font-family: 'Noto Sans KR', sans-serif; line-height: 1.7; margin: 0; padding: 0; background: #f0f8ff; color: #444; }
+        header, section, footer { max-width: 1000px; margin: 20px auto; padding: 25px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        h1, h2, h3 { color: #004aad; margin-top: 0; }
+        h1 { font-size: 2.2em; border-bottom: 3px solid #e0f0ff; padding-bottom: 10px; }
+        h2 { font-size: 1.8em; color: #0070f3; margin-top: 30px; border-left: 5px solid #0070f3; padding-left: 10px; }
+        h3 { font-size: 1.4em; color: #333; margin-top: 20px; }
+        ul, ol { padding-left: 25px; margin-bottom: 20px; }
+        li { margin-bottom: 8px; }
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 25px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #e0e0e0; padding: 15px; text-align: left; }
+        th { background: #004aad; color: #ffffff; font-weight: 700; text-align: center; }
+        td { background: #fafafa; }
+        a { color: #0070f3; text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: #005bb5; text-decoration: underline; }
+        /* CTA 버튼 */
+        .btn-cta {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 15px 35px;
+            background: #ff5722; /* 주황색 계열로 강조 */
+            color: #fff;
+            font-weight: 700;
+            border-radius: 40px;
+            box-shadow: 0 6px 15px rgba(255, 87, 34, 0.4);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1em;
+        }
+        .btn-cta:hover {
+            background: #e64a19;
+            transform: translateY(-2px);
+        }
+        /* 입력 폼 스타일 */
+        form label { display: block; margin-top: 15px; font-weight: 600; color: #004aad; }
+        form input[type="text"], form input[type="tel"], form input[type="date"], form select, form textarea {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+        form input:focus, form select:focus, form textarea:focus { border-color: #0070f3; outline: none; box-shadow: 0 0 5px rgba(0, 112, 243, 0.2); }
+        .form-group { margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 20px; }
+        .form-group > div { flex: 1 1 45%; min-width: 250px; }
+        .anchor { display: block; position: relative; top: -100px; visibility: hidden; }
+        /* 반응형 */
+        @media(max-width: 768px) {
+            header, section, footer { margin: 10px; padding: 15px; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            .form-group > div { flex: 1 1 100%; min-width: auto; }
+            .btn-cta { width: 90%; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MovingCompany",
+        "name": "울산보관이사 전문 프리미엄 서비스",
+        "image": "https://도메인/ulsan-logo.png",
+        "url": "https://도메인/울산보관이사",
+        "telephone": "052-987-6543",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "울산광역시 남구 번영로 123",
+            "addressLocality": "울산광역시",
+            "addressRegion": "울산",
+            "postalCode": "44701",
+            "addressCountry": "KR"
+        },
+        "areaServed": {
+            "@type": "City",
+            "name": "울산광역시"
+        },
+        "priceRange": "₩₩₩",
+        "description": "울산시 전 지역 프리미엄 보관이사 전문 서비스. 장기간, 단기간 이삿짐 안전 보관 및 포장 운송. 2026년 최적화 서비스."
+    }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>울산보관이사 프리미엄 서비스: 2026년 맞춤형 안전 보관 및 운송</h1>
+        <p>이사 날짜 불일치, 인테리어 공사, 해외 주재 등 복잡한 상황을 위한 **울산보관이사** 전문 솔루션입니다.</p>
+        <button class="btn-cta" onclick="location.href='#contact'">2026년 맞춤형 견적 지금 바로 신청하기</button>
+    </header>
+
+    <section>
+        <nav aria-label="페이지 내 이동">
+            <ul>
+                <li><a href="#about">보관이사 전문성</a></li>
+                <li><a href="#service-area">주요 서비스 지역</a></li>
+                <li><a href="#process">표준 진행 과정</a></li>
+                <li><a href="#pricing">2026 예상 비용 안내</a></li>
+                <li><a href="#checklist">필수 점검 사항</a></li>
+                <li><a href="#contact">프리미엄 견적 상담</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <section id="about">
+        <span id="about-anchor" class="anchor"></span>
+        <h2>울산보관이사, 왜 전문성이 필요할까요?</h2>
+        <p>
+            **울산보관이사**는 단순히 이삿짐을 옮겨 창고에 쌓아두는 것을 넘어, 고객님의 소중한 자산을 최적의 상태로 보존하고 정해진 날짜에 완벽하게 재설치하는 통합 솔루션입니다. 2026년 기준, 주택 거래 시장의 유동성 증가와 인테리어 수요의 폭증으로 인해 단기 또는 장기 이삿짐 보관의 필요성이 대두되고 있습니다. 특히 울산광역시의 특성상 산업단지 관련 출장 및 해외 주재원 이사가 잦아, 일반적인 포장이사로는 해결할 수 없는 '보관'이라는 핵심 과정의 전문성이 요구됩니다.
+        </p>
+        <p>
+            저희는 울산 지역에서 수십 년간 쌓아온 노하우를 바탕으로, 습도와 온도 변화에 취약한 가구, 가전, 의류, 미술품 등을 위한 맞춤형 보관 환경을 제공합니다. 이는 단순 창고 보관이 아닌, 특수 항온 항습 시설을 갖춘 전문 보관 센터를 의미하며, 모든 보관물품은 개별 보관함을 통해 관리되고 24시간 CCTV 및 보안 시스템으로 안전을 보장받습니다. **울산보관이사**를 계획하신다면, 이삿짐 포장부터 운송, 보관, 그리고 지정된 날짜의 재운송 및 정리까지 전 과정을 원스톱으로 처리하는 전문 업체를 선택해야만 파손, 분실, 곰팡이 등의 위험을 최소화할 수 있습니다.
+        </p>
+        <p>
+            2026년도 소비자 동향 분석에 따르면, 고객들은 비용 절감보다는 '안전성'과 '편의성'을 최우선으로 고려하고 있습니다. 따라서 저희는 모든 작업에 숙련된 전문가 팀을 배정하며, 이중 포장재와 최고급 무진동 차량을 활용하여 울산 어디든 안전하게 서비스합니다.
+        </p>
+        <p>
+            <a href="https://www.ulsan.go.kr/" target="_blank" rel="nofollow noopener">울산광역시 공식 웹사이트</a>에 따르면, 최근 몇 년간 도시 개발 및 재건축 프로젝트가 활발하게 진행됨에 따라 **울산보관이사**에 대한 수요는 꾸준히 증가하고 있으며, 이에 발맞춰 저희는 서비스를 혁신하고 있습니다.
+        </p>
+    </section>
+
+    <section id="service-area">
+        <span id="service-area-anchor" class="anchor"></span>
+        <h2>울산보관이사 광범위 서비스 지역 및 핵심 키워드 목록</h2>
+        <p>
+            울산 전 지역을 아우르는 광범위한 서비스 네트워크를 구축하여 고객님의 위치와 관계없이 신속하고 전문적인 보관이사 서비스를 제공합니다. 특히 **울산보관이사**는 울산의 주요 지역 특성을 고려한 맞춤형 운송 계획을 수립합니다. 아래는 네이버 검색 트렌드 및 '함께 많이 찾는' 카테고리를 분석하여 추출한 **울산보관이사** 관련 핵심 지역명 및 자동완성 키워드를 포함한 목록입니다.
+        </p>
+        <p>
+            울산보관이사 서비스를 필요로 하는 주요 거점 지역은 다음과 같습니다: **울산 남구보관이사** (삼산동, 달동, 신정동, 무거동, 야음동, 옥동, 선암동, 대현동, 수암동, 야음장생포동), **울산 북구보관이사** (화봉동, 농소동, 천곡동, 호계동, 매곡동, 송정동, 연암동, 신천동, 달천동), **울산 동구보관이사** (방어동, 전하동, 일산동, 남목동, 염포동, 서부동, 화정동, 꽃바위), **울산 중구보관이사** (병영동, 다운동, 태화동, 우정동, 학성동, 성남동, 반구동, 복산동, 약사동), 그리고 광활한 **울주군보관이사** (범서읍, 언양읍, 청량읍, 온산읍, 온양읍, 서생면, 두동면, 두서면, 상북면, 삼남면, 삼동면, 웅촌면, 율리, 구영리, 천상리, 덕하리, KTX울산역 인근).
+        </p>
+        <p>
+            이 외에도 **울산보관이사비용**, **울산보관이사후기**, **울산보관창고가격**, **울산포장이사가격비교**, **울산용달보관이사**, **울산원룸보관이사**, **울산아파트보관이사**, **울산빌라보관이사**, **울산오피스텔보관이사** 등 다양한 검색 의도를 가진 키워드들을 모두 충족시킬 수 있는 전문 정보와 견적 시스템을 제공합니다.
+        </p>
+        <p>
+            특히 **울산 이삿짐 보관** 기간은 단기(1~3개월), 중기(4~6개월), 장기(6개월 이상)로 구분되며, 각 기간에 맞는 최적의 보관 컨테이너 및 창고 시스템을 선택하는 것이 중요합니다. **울산보관이사**는 물품의 종류, 보관 기간, 재운송지 등을 종합적으로 고려하여 투명하고 합리적인 비용을 제안합니다.
+        </p>
+
+        <h3>울산보관이사 핵심 지역 및 세부 키워드 종합표 (2026년 기준)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>주요 행정동/읍면</th>
+                    <th>관련 키워드 (자동완성/연관)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>남구</td>
+                    <td>삼산동, 달동, 신정동, 무거동, 옥동, 야음동, 선암동</td>
+                    <td>남구보관이사견적, 공업탑 이사 보관, 삼산동 원룸 이사, 울산대 근처 보관</td>
+                </tr>
+                <tr>
+                    <td>북구</td>
+                    <td>화봉동, 송정동, 호계동, 매곡동, 농소동, 진장동, 효문동</td>
+                    <td>북구보관이사전문, 송정지구 이사, 천곡동 이삿짐 보관, 오토밸리로 보관이사</td>
+                </tr>
+                <tr>
+                    <td>동구</td>
+                    <td>전하동, 방어동, 일산동, 남목동, 서부동, 화정동</td>
+                    <td>동구보관이사비용, 현대중공업 이사, 방어진 이삿짐 보관, 꽃바위 보관이사</td>
+                </tr>
+                <tr>
+                    <td>중구</td>
+                    <td>병영동, 태화동, 우정동, 학성동, 다운동, 혁신도시</td>
+                    <td>중구보관이사후기, 울산혁신도시 보관, 태화강변 이사, 성남동 이사 보관</td>
+                </tr>
+                <tr>
+                    <td>울주군</td>
+                    <td>범서읍, 언양읍, 청량읍, 온산읍, 온양읍, 삼남읍, 서생면</td>
+                    <td>울주군보관이사, 구영리 보관 이사, 언양 KTX 보관, 온산공단 이사 보관</td>
+                </tr>
+                <tr>
+                    <td>유형별</td>
+                    <td>원룸, 투룸, 아파트, 빌라, 사무실</td>
+                    <td>소형보관이사, 단기보관이사, 장기보관이사, 반포장보관이사, 울산보관이사 최저가</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            네이버 스니펫 노출을 목표로 하는 정보성 텍스트를 구성할 때는, 이러한 다양한 키워드들을 문맥에 맞게 자연스럽게 삽입하는 것이 중요하며, 전문적인 보관 시스템에 대한 상세 설명은 고객의 신뢰를 높여 체류 시간을 증가시키는 핵심 요소가 됩니다. **울산보관이사** 업체를 선정할 때, 단순 가격 비교를 넘어 이러한 전문성과 키워드 관련성을 확인하는 것이 장기적으로 만족도 높은 이사를 보장합니다.
+        </p>
+    </section>
+
+    <section id="process">
+        <span id="process-anchor" class="anchor"></span>
+        <h2>울산보관이사 표준 진행 5단계 과정 상세 안내</h2>
+        <p>
+            저희 **울산보관이사** 서비스는 고객님의 소중한 이삿짐을 안전하게 보관하고 재운송하기 위해 체계적이고 전문화된 5단계 표준 프로세스를 따릅니다.
+        </p>
+        <ol>
+            <li>
+                <strong>1단계: 전문 방문 견적 및 계약 (예약 확정)</strong>
+                <p>
+                    고객님께서 상담을 요청하시면, 이사 전문가가 직접 자택(남구, 북구, 동구, 중구, 울주군 전 지역)을 방문하여 이삿짐의 양, 특이 물품(가령, 피아노, 미술품, 대형 가전), 출발 및 도착지의 환경(사다리차 사용 여부, 엘리베이터 유무), 그리고 가장 중요한 **울산보관이사** 기간을 정확히 파악합니다. 이 단계에서 모든 서비스 범위와 예상 비용(포장재, 운송, 보관료, 재운송료 등)을 투명하게 고지하며, **이사화물 배상책임보험** 가입 확인서를 포함하여 계약을 체결합니다.
+                </p>
+            </li>
+            <li>
+                <strong>2단계: 프리미엄 포장 및 반출 (보관 최적화 포장)</strong>
+                <p>
+                    보관 기간 동안 이삿짐의 손상을 방지하기 위해 일반 포장이사와 차별화된 **보관 최적화 포장**을 시행합니다. 가구류는 이중 버블캡과 전용 포장 커버를 사용하여 습기 및 스크래치를 방지합니다. 의류 및 침구류는 방습제를 투입한 특수 비닐 포장 후 보관용 박스에 밀봉합니다. 모든 박스에는 고유 번호표를 부착하여 전산 시스템에 입력함으로써 입고 시부터 재운송 시까지 분실의 위험을 원천 차단합니다. **울산보관이사**의 핵심은 이 포장 기술에 있습니다.
+                </p>
+            </li>
+            <li>
+                <strong>3단계: 안전 운송 및 전문 보관 창고 입고</strong>
+                <p>
+                    포장이 완료된 이삿짐은 무진동 탑차를 이용하여 지정된 **전문 보관 창고**로 안전하게 운송됩니다. 저희의 보관 시설은 일반 컨테이너가 아닌, 항온항습 설비를 갖춘 실내 창고이며, 특히 울산 지역의 계절 변화(잦은 비와 높은 습도)에 대응하여 물품 손상을 최소화합니다. 각 이삿짐은 개별 격리된 보관함에 안전하게 적재되며, 24시간 감시 시스템(CCTV) 하에 철저하게 관리됩니다.
+                </p>
+            </li>
+            <li>
+                <strong>4단계: 보관 기간 중 관리 및 재확인 (장기 보관 특화)</strong>
+                <p>
+                    고객님의 이삿짐이 보관되는 기간 동안 정기적인 점검(습도 및 온도 체크, 해충 방지 작업)을 수행합니다. 장기간 보관하시는 고객님(특히 해외 주재 등으로 인한 **장기보관이사** 고객)께는 정기적으로 물품 상태 보고서를 제공하여 안심하고 맡기실 수 있도록 합니다. 고객님의 요청에 따라 보관 물품의 부분 출고/재입고 서비스도 유연하게 지원합니다.
+                </p>
+            </li>
+            <li>
+                <strong>5단계: 재운송, 재설치 및 마무리 정리</strong>
+                <p>
+                    보관 기간이 끝나고 새로운 주소지로의 이사(울산 내 이동 또는 타지역 이동)가 시작되면, 재운송 전 물품 상태를 재확인하고 포장 그대로 안전하게 운반합니다. 도착지에서는 가구 배치, 가전 설치, 정리 정돈, 바닥 청소까지 포함하는 프리미엄 서비스를 제공합니다. 고객 검수 후 최종 계약이 완료되며, 하자 발생 시 즉시 A/S를 진행하여 책임감 있는 마무리를 약속드립니다.
+                </p>
+            </li>
+        </ol>
+        <p>
+            이러한 체계적인 과정을 통해 **울산보관이사**는 단순한 운송업을 넘어 이사 계획 전체를 관리하는 종합 이사 컨설팅 서비스를 제공하고 있습니다.
+        </p>
+        <p>
+            <a href="https://www.kca.go.kr/main.do" target="_blank" rel="nofollow noopener">한국소비자원</a>의 이사 서비스 관련 권고사항을 준수하며, 소비자의 권익 보호를 최우선으로 생각합니다.
+        </p>
+    </section>
+
+    <section id="pricing">
+        <span id="pricing-anchor" class="anchor"></span>
+        <h2>2026년 울산보관이사 서비스 & 예상 비용 투명 안내</h2>
+        <p>
+            **울산보관이사** 비용은 일반 포장이사 비용에 **'보관료'**가 추가되는 형태로 산정됩니다. 보관료는 이삿짐의 용량(톤/평), 보관 기간(일/월), 보관 시설의 유형(실내 항온항습/컨테이너)에 따라 크게 달라집니다. 아래 표는 2026년 예상되는 표준 견적 범위이며, 정확한 비용은 반드시 방문 견적을 통해 확인해야 합니다.
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>이사 유형</th>
+                    <th>표준 이삿짐 용량 (톤)</th>
+                    <th>포장이사 + 운송비 (1회차)</th>
+                    <th>월 보관료 (표준)</th>
+                    <th>재운송 + 정리비 (2회차)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>원룸/투룸 보관이사</td>
+                    <td>1.5톤 ~ 3톤</td>
+                    <td>50만 원 ~ 90만 원</td>
+                    <td>15만 원 ~ 25만 원</td>
+                    <td>30만 원 ~ 50만 원</td>
+                </tr>
+                <tr>
+                    <td>빌라/주거 포장이사</td>
+                    <td>4톤 ~ 6톤</td>
+                    <td>90만 원 ~ 140만 원</td>
+                    <td>25만 원 ~ 40만 원</td>
+                    <td>50만 원 ~ 80만 원</td>
+                </tr>
+                <tr>
+                    <td>아파트/대형 평수 이사</td>
+                    <td>7톤 이상</td>
+                    <td>130만 원 ~ 200만 원</td>
+                    <td>40만 원 ~ 60만 원 이상</td>
+                    <td>70만 원 ~ 120만 원 이상</td>
+                </tr>
+                <tr>
+                    <td>사무실/기업 보관이사</td>
+                    <td>별도 협의</td>
+                    <td>별도 협의</td>
+                    <td>별도 협의</td>
+                    <td>별도 협의</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <strong>참고 사항:</strong> 상기 비용은 **울산보관이사** 표준 서비스 기준이며, 사다리차 사용료, 에어컨 탈부착, 피아노 운반, 특수 포장재 사용 등 추가 옵션에 따라 최종 견적은 달라질 수 있습니다. 특히 이사 성수기(3월, 7월, 9월)와 주말 이사는 평일 대비 10%~20% 할증이 적용될 수 있습니다. **울산보관이사** 업체를 선택할 때는 저렴한 비용만을 고집하기보다, 보관 환경(습도, 보안) 및 보험 가입 여부를 반드시 확인해야 합니다.
+        </p>
+        <p>
+            **울산보관이사** 관련하여 <a href="https://namu.wiki/w/이사" target="_blank" rel="nofollow noopener">나무위키의 이사 관련 정보</a> 및 <a href="https://www.law.go.kr/법령/화물자동차운수사업법" target="_blank" rel="nofollow noopener">국가법령정보센터의 화물자동차 운수사업법</a>을 통해 합법적인 사업자 등록 여부를 확인하는 것이 중요합니다.
+        </p>
+    </section>
+
+    <section id="checklist">
+        <span id="checklist-anchor" class="anchor"></span>
+        <h2>성공적인 울산보관이사를 위한 필수 점검 사항</h2>
+        <p>
+            **울산보관이사**는 일반 이사보다 과정이 복잡하므로, 사전에 꼼꼼한 체크리스트 작성을 통해 불필요한 비용 지출과 차질을 막을 수 있습니다.
+        </p>
+        <ul>
+            <li>
+                <strong>보관 기간 확정:</strong> 보관 기간을 명확히 설정하고, 기간 연장이나 단축 시 발생하는 추가 비용 및 절차를 계약서에 명시합니다.
+            </li>
+            <li>
+                <strong>보험 가입 확인:</strong> 이삿짐 파손 및 분실에 대비하여 **이사화물 배상책임보험** 가입 증서를 반드시 요구하고, 보상 한도를 확인합니다.
+            </li>
+            <li>
+                <strong>귀중품 분리 보관:</strong> 현금, 유가증권, 귀금속, 고가 미술품 등은 보관이사 대상에서 제외하고 고객이 직접 보관 운반해야 합니다.
+            </li>
+            <li>
+                <strong>폐기물 처리 계획:</strong> 보관이사 전 불필요한 가구나 가전제품의 폐기물 처리 계획을 미리 세워 불필요한 보관료를 절감합니다. <a href="https://www.molit.go.kr/" target="_blank" rel="nofollow noopener">국토교통부</a> 관련 지침 확인.
+            </li>
+            <li>
+                <strong>계절 물품 선별:</strong> 보관 기간 중 사용할 일이 없는 계절 의류나 용품을 먼저 포장하고, 당장 필요한 최소한의 물품(생활 필수품)은 별도 박스에 담아 라벨링 합니다.
+            </li>
+            <li>
+                <strong>전입/전출 신고:</strong> 장기간 보관으로 인해 주소지가 불분명해지는 일이 없도록 관련 행정기관에 문의하여 전입 신고 유예 및 공과금 정산을 완료해야 합니다.
+            </li>
+        </ul>
+        <button class="btn-cta" onclick="location.href='#contact'">자세한 이사 상담 신청하기</button>
+    </section>
+
+    <section id="contact">
+        <span id="contact-anchor" class="anchor"></span>
+        <h2>프리미엄 울산보관이사 상세 견적 상담 문의</h2>
+        <p>
+            정확하고 신뢰할 수 있는 2026년 **울산보관이사** 견적을 위해 아래 상세 정보를 입력해 주시면, 전문 상담사가 연락드립니다. 정보가 많을수록 더욱 정확하고 맞춤화된 견적을 빠르게 받아보실 수 있으며, 이는 곧 고객님의 체류 시간을 늘리고 검색 엔진 최적화에 기여하는 핵심적인 요소입니다.
+        </p>
+        <form action="/ulsan_storage_moving_submit" method="POST" style="max-width:800px; margin:auto;">
+            <div class="form-group">
+                <div>
+                    <label for="name">이름<span style="color:red;">*</span></label>
+                    <input type="text" id="name" name="name" required />
+                </div>
+                <div>
+                    <label for="phone">연락처<span style="color:red;">*</span></label>
+                    <input type="tel" id="phone" name="phone" required placeholder="010-XXXX-XXXX" pattern="[0-9\-]+" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <label for="move-out-date">이삿짐 반출 예정일 (보관 시작일)<span style="color:red;">*</span></label>
+                    <input type="date" id="move-out-date" name="move_out_date" required />
+                </div>
+                <div>
+                    <label for="move-in-date">이삿짐 재운송 예정일 (보관 종료일)</label>
+                    <input type="date" id="move-in-date" name="move_in_date" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <label for="storage-period">예상 보관 기간 (개월)</label>
+                    <select id="storage-period" name="storage_period">
+                        <option value="">선택하세요</option>
+                        <option value="1-3개월">단기 보관 (1-3개월)</option>
+                        <option value="4-6개월">중기 보관 (4-6개월)</option>
+                        <option value="6개월이상">장기 보관 (6개월 이상)</option>
+                        <option value="미정">미정</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="move-type">현재 거주 유형<span style="color:red;">*</span></label>
+                    <select id="move-type" name="move_type" required>
+                        <option value="">선택하세요 (원룸, 아파트, 빌라 등)</option>
+                        <option value="원룸">원룸 보관이사</option>
+                        <option value="투룸">투룸 보관이사</option>
+                        <option value="빌라">빌라 보관이사</option>
+                        <option value="아파트">아파트 보관이사</option>
+                        <option value="오피스텔">오피스텔 보관이사</option>
+                        <option value="사무실">사무실 보관이사</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <label for="current-address">현재 주소 (울산 지역명)<span style="color:red;">*</span></label>
+                    <input type="text" id="current-address" name="current_address" required placeholder="예: 울산 남구 삼산동" />
+                </div>
+                <div>
+                    <label for="new-address">재운송 예정 주소 (울산 또는 타지역)</label>
+                    <input type="text" id="new-address" name="new_address" placeholder="예: 울산 북구 송정동 또는 부산 해운대구" />
+                </div>
+            </div>
+
+            <div>
+                <label for="special-items">특수 물품 및 요구 사항</label>
+                <textarea id="special-items" name="special_items" rows="3" placeholder="예: 피아노 운반, 에어컨 탈부착, 고가 미술품 유무, 사다리차 필요 여부 등 상세 기재 (울산보관이사 견적에 반영됩니다.)"></textarea>
+            </div>
+
+            <button type="submit" class="btn-cta">프리미엄 보관이사 견적 문의 접수</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>2026년 울산보관이사 전문 서비스. 사업자 등록번호: 987-65-43210</p>
+        <p>문의 전화: <a href="tel:0529876543">052-987-6543</a> | 이메일: <a href="mailto:ulsanhelp@domain.com">ulsanhelp@domain.com</a></p>
+    </footer>
+</body>
 </html>
